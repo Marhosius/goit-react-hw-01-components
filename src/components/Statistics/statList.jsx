@@ -1,13 +1,14 @@
 import PropTypes from "prop-types";
+import css from './statistics.module.css';
 
 function StatList({ data }) {
     return (
-        <ul className="stat-list">
+        <ul style={{ backgroundColor: getRandomColor() }} className={css.statList}>
             {data.map(({ id, label, percentage }) =>
             (
-                <li className="item" key={id}>
-                    <span className="label">{label}</span>
-                    <span className="percentage">{percentage}</span>
+                <li style={{ backgroundColor: getRandomColor() }} className={css.item} key={id}>
+                    <span className={css.label}>{label}</span>
+                    <span className={css.percentage}>{percentage}%</span>
                 </li >
             )
             )
@@ -20,5 +21,14 @@ StatList.propTypes = {
     label: PropTypes.string,
     id: PropTypes.string,
 };
+
+function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
 
 export default StatList;

@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
+import css from './statistics.module.css';
 
-const StatisticsTitle = ({ stats, title }) => stats ? (<h2 className="title">{title}</h2>) : "";
+const StatisticsTitle = ({ stats, title }) => stats ? (<h2 className={css.title}>{title}</h2>) : "";
 
 
 StatisticsTitle.propTypes = {

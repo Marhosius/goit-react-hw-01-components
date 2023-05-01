@@ -9,7 +9,7 @@ import transactions from './TransactionHistory/TransactionHistoryJson/transactio
 
 export const App = () => {
   return (
-    <div>
+    <div className="container">
       <Profile {...user} />
       <Statistics data={data} />
       <FriendList data={friends} />
