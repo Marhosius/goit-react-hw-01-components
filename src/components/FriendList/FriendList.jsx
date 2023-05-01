@@ -1,16 +1,16 @@
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import FriendListItem from "./FriendListItem";
+import css from './FriendList.module.css';
 
-const FriendList = (props) => (
-    <ul className="friend-list">
-        <FriendListItem data={props.data} />
+const FriendList = ({ data }) => (
+    <ul className={css.friendList}>
+        <FriendListItem data={data} />
     </ul>
 )
 
 
-// StatisticsTitle.propTypes = {
-//     stats: PropTypes.array,
-//     title: PropTypes.string,
-// };
+FriendList.propTypes = {
+    data: PropTypes.object,
+};
 
 export default FriendList;
