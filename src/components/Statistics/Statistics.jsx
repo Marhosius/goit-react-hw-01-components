@@ -1,19 +1,42 @@
 import PropTypes from "prop-types";
-import StatisticsTitle from "./title";
-import StatList from "./statList";
-import css from './statistics.module.css';
+import css from './Statistics.module.css';
 
-function Statistics(props) {
+function Statistics({ data, title }) {
+    const titleMark = (title) => title ? (<h2 className={css.title}>{title}</h2>) : "";
     return (<section className={css.statistics}>
-        <StatisticsTitle title="Upload stats" stats={props.data} />
-        <StatList data={props.data} />
+        {titleMark(title)}
+        {<ul style={{ backgroundColor: getRandomColor() }} className={css.statList}>
+            {data.map(({ id, label, percentage }) =>
+            (
+                <li style={{ backgroundColor: getRandomColor() }} className={css.item} key={id}>
+                    <span className={css.label}>{label}</span>
+                    <span className={css.percentage}>{percentage}%</span>
+                </li >
+            )
+            )
+            }
+        </ul>}
 
     </section>
     )
 }
 
 Statistics.propTypes = {
-    props: PropTypes.object,
+    title: PropTypes.string,
+    data: PropTypes.arrayOf(PropTypes.shape({
+        percentage: PropTypes.number,
+        label: PropTypes.string,
+        id: PropTypes.string,
+    }))
 };
+
+function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
 
 export default Statistics;
