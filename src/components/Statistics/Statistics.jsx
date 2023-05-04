@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import css from './Statistics.module.css';
+import css from './statistics.module.css';
 
 function Statistics({ data, title }) {
     const titleMark = (title) => title ? (<h2 className={css.title}>{title}</h2>) : "";
